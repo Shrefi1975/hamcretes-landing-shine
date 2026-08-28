@@ -1,5 +1,5 @@
 import { PlayCircle } from "lucide-react";
-import showcase from "@/assets/showcase.mp4.asset.json";
+import showcase from "@/assets/showcase.mp4";
 import { useLang } from "@/lib/i18n";
 
 export function VideoShowcase() {
@@ -24,7 +24,7 @@ export function VideoShowcase() {
 
         <div className="mx-auto w-full max-w-sm min-w-0 overflow-hidden rounded-2xl border border-border bg-navy-deep shadow-card">
           <video
-            src={showcase.url}
+            src={showcase}
             controls
             playsInline
             muted

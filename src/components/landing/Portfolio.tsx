@@ -1,20 +1,20 @@
 import { useState } from "react";
-import w1 from "@/assets/work-1.jpg.asset.json";
-import w2 from "@/assets/work-2.jpg.asset.json";
-import w3 from "@/assets/work-3.jpg.asset.json";
-import w4 from "@/assets/work-4.jpg.asset.json";
-import w5 from "@/assets/work-5.jpg.asset.json";
-import w6 from "@/assets/work-6.jpg.asset.json";
+import w1 from "@/assets/work-1.jpg";
+import w2 from "@/assets/work-2.jpg";
+import w3 from "@/assets/work-3.jpg";
+import w4 from "@/assets/work-4.jpg";
+import w5 from "@/assets/work-5.jpg";
+import w6 from "@/assets/work-6.jpg";
 import { useLang } from "@/lib/i18n";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const WORKS = [
-  { src: w1.url, ar: "ميدالية خرسانة مطبوعة", en: "Stamped concrete medallion", span: "sm:col-span-2" },
-  { src: w2.url, ar: "أرضية ايبوكسي لمواقف السيارات", en: "Epoxy parking floor", span: "" },
-  { src: w3.url, ar: "ممر مطبوع بنقش الحجر", en: "Stone-pattern stamped walkway", span: "" },
-  { src: w4.url, ar: "عينة صبة مطبوعة ملونة", en: "Colored stamped sample slab", span: "" },
-  { src: w5.url, ar: "أعمال هلي كابتر ومروحة", en: "Power trowel / helicopter finishing", span: "sm:col-span-2" },
-  { src: w6.url, ar: "ممر حديقة بتشطيب مطبوع", en: "Garden walkway stamped finish", span: "" },
+  { src: w1, ar: "ميدالية خرسانة مطبوعة", en: "Stamped concrete medallion", span: "sm:col-span-2" },
+  { src: w2, ar: "أرضية ايبوكسي لمواقف السيارات", en: "Epoxy parking floor", span: "" },
+  { src: w3, ar: "ممر مطبوع بنقش الحجر", en: "Stone-pattern stamped walkway", span: "" },
+  { src: w4, ar: "عينة صبة مطبوعة ملونة", en: "Colored stamped sample slab", span: "" },
+  { src: w5, ar: "أعمال هلي كابتر ومروحة", en: "Power trowel / helicopter finishing", span: "sm:col-span-2" },
+  { src: w6, ar: "ممر حديقة بتشطيب مطبوع", en: "Garden walkway stamped finish", span: "" },
 ];
 
 export function Portfolio() {
