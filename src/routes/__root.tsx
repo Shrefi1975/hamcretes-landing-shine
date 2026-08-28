@@ -77,14 +77,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "حمكريتس لمقاولات الخرسانة المطبوعة | Hamcretes" },
+      {
+        name: "description",
+        content:
+          "حمكريتس لمقاولات الخرسانة المطبوعة: صبة مطبوعة، دهان ايبوكسي، هلي كابتر، صبة ميول ومستودعات. احجز معاينة مجانية واتساب 0595584104.",
+      },
+      { name: "author", content: "Hamcretes" },
+      { property: "og:title", content: "حمكريتس لمقاولات الخرسانة المطبوعة | Hamcretes" },
+      {
+        property: "og:description",
+        content:
+          "حمكريتس لمقاولات الخرسانة المطبوعة: صبة مطبوعة، دهان ايبوكسي، هلي كابتر، صبة ميول ومستودعات. احجز معاينة مجانية واتساب 0595584104.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Hamcretes" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

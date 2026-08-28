@@ -11,6 +11,8 @@ import { LangProvider, useLang } from "@/lib/i18n";
 const TITLE = "حمكريتس لمقاولات الخرسانة المطبوعة | Hamcretes";
 const DESC =
   "حمكريتس لمقاولات الخرسانة المطبوعة: صبة مطبوعة، دهان ايبوكسي، هلي كابتر، صبة ميول ومستودعات. احجز معاينة مجانية واتساب 0595584104.";
+const SITE_URL = "https://hamcretes-landing-shine.lovable.app";
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,8 +22,14 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: SITE_URL }],
   }),
   component: Index,
 });
