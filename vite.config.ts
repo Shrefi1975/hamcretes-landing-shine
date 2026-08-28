@@ -12,4 +12,17 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  nitro: {
+    // On Netlify, netlify.toml sets NITRO_PRESET=netlify so the SSR server is
+    // deployed as a Netlify Function; everywhere else (incl. this workspace)
+    // it stays on the default Cloudflare preset.
+    preset: process.env["NITRO_PRESET"] === "netlify" ? "netlify" : "cloudflare-module",
+    // Pin the output layout so hosting platforms always find the static site
+    // at dist/client (outside the sandbox these default to .output otherwise).
+    output: {
+      dir: "dist",
+      serverDir: "dist/server",
+      publicDir: "dist/client",
+    },
+  },
 });
