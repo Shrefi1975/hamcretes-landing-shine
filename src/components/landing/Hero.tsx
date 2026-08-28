@@ -27,9 +27,9 @@ export function Hero() {
       <div className="absolute inset-0">
         {SLIDES.map((s, idx) => (
           <img
-            key={s.label}
+            key={s.en}
             src={s.src}
-            alt={s.label}
+            alt={label(s)}
             width={1600}
             height={1008}
             loading={idx === 0 ? "eager" : "lazy"}
