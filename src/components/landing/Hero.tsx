@@ -4,15 +4,18 @@ import stamped from "@/assets/hero-stamped.jpg";
 import epoxy from "@/assets/hero-epoxy.jpg";
 import trowel from "@/assets/hero-trowel.jpg";
 import { WHATSAPP_URL, PHONE_DISPLAY } from "@/lib/hamcretes";
+import { useLang } from "@/lib/i18n";
 
 const SLIDES = [
-  { src: stamped, label: "صبة مطبوعة" },
-  { src: epoxy, label: "دهان ايبوكسي" },
-  { src: trowel, label: "صبة مروحة وهلي كابتر" },
+  { src: stamped, ar: "صبة مطبوعة", en: "Stamped Concrete" },
+  { src: epoxy, ar: "دهان ايبوكسي", en: "Epoxy Coating" },
+  { src: trowel, ar: "صبة مروحة وهلي كابتر", en: "Power Trowel & Helicopter" },
 ];
 
 export function Hero() {
   const [i, setI] = useState(0);
+  const { t, lang } = useLang();
+  const label = (s: (typeof SLIDES)[number]) => (lang === "ar" ? s.ar : s.en);
 
   useEffect(() => {
     const t = setInterval(() => setI((p) => (p + 1) % SLIDES.length), 5000);
