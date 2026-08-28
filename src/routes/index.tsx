@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ShieldCheck, Timer, Crosshair, HardHat } from "lucide-react";
 import { Hero } from "@/components/landing/Hero";
+import { VideoShowcase } from "@/components/landing/VideoShowcase";
 import { Services } from "@/components/landing/Services";
+import { Portfolio } from "@/components/landing/Portfolio";
 import { Booking } from "@/components/landing/Booking";
 import { Header, Footer, FloatingWhatsApp } from "@/components/landing/Chrome";
+import { LangProvider, useLang } from "@/lib/i18n";
 
 const TITLE = "حمكريتس لمقاولات الخرسانة المطبوعة | Hamcretes";
 const DESC =
@@ -24,29 +27,33 @@ export const Route = createFileRoute("/")({
 });
 
 const WHY = [
-  { icon: Crosshair, title: "دقة الليزر", text: "ضبط المناسيب بجهاز الليول لسطح مستوٍ تماماً." },
-  { icon: HardHat, title: "فريق متخصص", text: "عمالة مدربة ومعدات حديثة لكل نوع من الصبات." },
-  { icon: Timer, title: "التزام بالمواعيد", text: "جدول تنفيذ واضح وتسليم في الوقت المحدد." },
-  { icon: ShieldCheck, title: "ضمان التشطيب", text: "خيار التنفيذ مع مواد أو بدون مواد مع ضمان." },
-];
+  { icon: Crosshair, title: "why1", text: "why1t" },
+  { icon: HardHat, title: "why2", text: "why2t" },
+  { icon: Timer, title: "why3", text: "why3t" },
+  { icon: ShieldCheck, title: "why4", text: "why4t" },
+] as const;
 
-function Index() {
+function Page() {
+  const { t, lang } = useLang();
+
   return (
-    <div dir="rtl" className="min-h-screen bg-background">
+    <div dir={lang === "ar" ? "rtl" : "ltr"} className="min-h-screen bg-background">
       <Header />
       <main>
         <Hero />
+        <VideoShowcase />
         <Services />
+        <Portfolio />
 
         <section id="why" className="bg-secondary py-20 sm:py-24">
           <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-            <h2 className="text-3xl font-black text-navy-deep sm:text-4xl">لماذا حمكريتس؟</h2>
+            <h2 className="text-3xl font-black text-navy-deep sm:text-4xl">{t("whyTitle")}</h2>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {WHY.map((w) => (
                 <div key={w.title} className="rounded-xl bg-card p-6 shadow-card">
                   <w.icon className="h-8 w-8 shrink-0 text-amber" />
-                  <h3 className="mt-4 text-lg font-black text-navy-deep">{w.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{w.text}</p>
+                  <h3 className="mt-4 text-lg font-black text-navy-deep">{t(w.title)}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(w.text)}</p>
                 </div>
               ))}
             </div>
@@ -58,5 +65,13 @@ function Index() {
       <Footer />
       <FloatingWhatsApp />
     </div>
+  );
+}
+
+function Index() {
+  return (
+    <LangProvider>
+      <Page />
+    </LangProvider>
   );
 }

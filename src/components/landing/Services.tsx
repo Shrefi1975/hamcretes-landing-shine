@@ -1,14 +1,19 @@
 import { SERVICES } from "@/lib/hamcretes";
+import { useLang } from "@/lib/i18n";
 
 export function Services() {
+  const { t, lang } = useLang();
+
   return (
     <section id="services" className="relative bg-background py-20 sm:py-28">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
-          <span className="text-sm font-black tracking-widest text-amber uppercase">Our Services</span>
-          <h2 className="mt-3 text-3xl font-black text-navy-deep sm:text-5xl">خدماتنا</h2>
+          <span className="text-sm font-black tracking-widest text-amber uppercase">
+            {t("servicesKicker")}
+          </span>
+          <h2 className="mt-3 text-3xl font-black text-navy-deep sm:text-5xl">{t("servicesTitle")}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            جميع أعمال الخرسانة والتشطيبات الأرضية تحت سقف واحد، بفريق فني متخصص ومعدات حديثة.
+            {t("servicesText")}
           </p>
         </div>
 
@@ -22,11 +27,13 @@ export function Services() {
               <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-navy/10 text-navy transition-colors group-hover:bg-gradient-amber group-hover:text-accent-foreground">
                 <s.icon className="h-6 w-6 shrink-0" />
               </div>
-              <h3 className="mt-4 text-xl font-black text-navy-deep">{s.ar}</h3>
+              <h3 className="mt-4 text-xl font-black text-navy-deep">{lang === "ar" ? s.ar : s.en}</h3>
               <p className="mt-1 font-display text-sm font-semibold tracking-wide text-amber uppercase">
-                {s.en}
+                {lang === "ar" ? s.en : s.ar}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {lang === "ar" ? s.desc : s.descEn}
+              </p>
             </article>
           ))}
         </div>
