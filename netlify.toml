@@ -1,6 +1,9 @@
 [build]
   command = "bun install && bun run build"
-  publish = "dist/client"
+  # The nitro "netlify" preset (activated via NITRO_PRESET below) emits the
+  # publishable static site to dist/ and the SSR function to
+  # .netlify/functions-internal/server (auto-detected by Netlify).
+  publish = "dist"
 
 [build.environment]
   NITRO_PRESET = "netlify"
@@ -8,3 +11,11 @@
 
 [functions]
   node_bundler = "esbuild"
+
+# SPA/SSR fallback: route all non-static traffic to the SSR function.
+# (public/_redirects is also copied into dist/ with the same rule; this
+# guarantees the fallback even if the file is missed.)
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
