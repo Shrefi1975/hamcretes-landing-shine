@@ -16,9 +16,9 @@ function LangToggle({ className = "" }: { className?: string }) {
   const { lang, setLang } = useLang();
   return (
     <div
-      className={`inline-flex items-center gap-1 rounded-full border border-primary-foreground/25 bg-primary-foreground/5 p-1 ${className}`}
+      className={`inline-flex items-center gap-1 rounded-full border-2 border-amber-bright bg-gradient-amber p-1 shadow-[0_0_0_3px_rgba(245,158,11,0.2)] ${className}`}
     >
-      <Languages className="mx-1 h-4 w-4 shrink-0 text-amber-bright" />
+      <Languages className="mx-1 h-4 w-4 shrink-0 text-accent-foreground" />
       {(["ar", "en"] as const).map((l) => (
         <button
           key={l}
@@ -26,13 +26,14 @@ function LangToggle({ className = "" }: { className?: string }) {
           aria-pressed={lang === l}
           className={`rounded-full px-3 py-1 text-xs font-black transition-colors ${
             lang === l
-              ? "bg-gradient-amber text-accent-foreground"
-              : "text-primary-foreground/70 hover:text-primary-foreground"
+              ? "bg-primary text-amber-bright shadow-sm"
+              : "text-accent-foreground/80 hover:text-accent-foreground"
           }`}
         >
           {l === "ar" ? "عربي" : "EN"}
         </button>
       ))}
+
     </div>
   );
 }
