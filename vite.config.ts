@@ -20,6 +20,7 @@ export default defineConfig({
     // Prerender the landing page to static HTML so dist/client contains a real
     // index.html — static hosts (Netlify publish dir) can serve it directly
     // with the SPA fallback in public/_redirects.
+    // @ts-expect-error — supported by nitro at runtime; missing from the typed wrapper config
     prerender: {
       routes: ["/"],
       crawlLinks: true,
