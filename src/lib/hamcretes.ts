@@ -15,12 +15,30 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import svc1 from "@/assets/svc-1.jpg";
+import svc2 from "@/assets/svc-2.jpg";
+import svc3 from "@/assets/svc-3.jpg";
+import svc4 from "@/assets/svc-4.jpg";
+import svc5 from "@/assets/svc-5.jpg";
+import svc6 from "@/assets/svc-6.jpg";
+import svc7 from "@/assets/svc-7.jpg";
+import svc8 from "@/assets/svc-8.jpg";
+import svc9 from "@/assets/svc-9.jpg";
+import svc10 from "@/assets/svc-10.jpg";
+import svc11 from "@/assets/svc-11.jpg";
+import svc12 from "@/assets/svc-12.jpg";
+import svc13 from "@/assets/svc-13.jpg";
+import svc14 from "@/assets/svc-14.jpg";
+
 export type Service = {
   ar: string;
   en: string;
   desc: string;
   descEn: string;
   icon: LucideIcon;
+  img: string;
+  points: string[];
+  pointsEn: string[];
 };
 
 export const SERVICES: Service[] = [
