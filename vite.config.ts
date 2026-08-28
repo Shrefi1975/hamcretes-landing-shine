@@ -6,6 +6,9 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// netlify.toml sets NITRO_PRESET=netlify on Netlify builds.
+const isNetlify = process.env["NITRO_PRESET"] === "netlify";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
@@ -13,24 +16,22 @@ export default defineConfig({
     server: { entry: "server" },
   },
   nitro: {
-    // On Netlify, netlify.toml sets NITRO_PRESET=netlify so the SSR server is
-    // deployed as a Netlify Function; everywhere else (incl. this workspace)
-    // it stays on the default Cloudflare preset.
-    preset: process.env["NITRO_PRESET"] === "netlify" ? "netlify" : "cloudflare-module",
-    // Prerender the landing page to static HTML so dist/client contains a real
-    // index.html — static hosts (Netlify publish dir) can serve it directly
-    // with the SPA fallback in public/_redirects.
-    // @ts-expect-error — supported by nitro at runtime; missing from the typed wrapper config
-    prerender: {
-      routes: ["/"],
-      crawlLinks: true,
-    },
-    // Pin the output layout so hosting platforms always find the static site
-    // at dist/client (outside the sandbox these default to .output otherwise).
-    output: {
-      dir: "dist",
-      serverDir: "dist/server",
-      publicDir: "dist/client",
-    },
+    // On Netlify, deploy the SSR server as a Netlify Function using the
+    // preset's native layout (.netlify/functions-internal + generated
+    // _redirects in the publish dir). Everywhere else (incl. this workspace)
+    // keep the default Cloudflare preset.
+    preset: isNetlify ? "netlify" : "cloudflare-module",
+    // Pin the output layout for the default (Cloudflare) build only. On
+    // Netlify the preset must control its own output layout, otherwise no
+    // function or _redirects fallback is generated and the site 404s.
+    // netlify.toml still publishes dist/client, which the netlify preset
+    // uses as its public dir.
+    ...(!isNetlify && {
+      output: {
+        dir: "dist",
+        serverDir: "dist/server",
+        publicDir: "dist/client",
+      },
+    }),
   },
 });
