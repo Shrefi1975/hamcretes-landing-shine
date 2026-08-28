@@ -1,3 +1,4 @@
+import { useState } from "react";
 import w1 from "@/assets/work-1.jpg.asset.json";
 import w2 from "@/assets/work-2.jpg.asset.json";
 import w3 from "@/assets/work-3.jpg.asset.json";
@@ -5,6 +6,7 @@ import w4 from "@/assets/work-4.jpg.asset.json";
 import w5 from "@/assets/work-5.jpg.asset.json";
 import w6 from "@/assets/work-6.jpg.asset.json";
 import { useLang } from "@/lib/i18n";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const WORKS = [
   { src: w1.url, ar: "ميدالية خرسانة مطبوعة", en: "Stamped concrete medallion", span: "sm:col-span-2" },
@@ -17,6 +19,8 @@ const WORKS = [
 
 export function Portfolio() {
   const { t, lang } = useLang();
+  const [open, setOpen] = useState<(typeof WORKS)[number] | null>(null);
+  const ar = lang === "ar";
 
   return (
     <section id="work" className="bg-background py-20 sm:py-28">
@@ -31,25 +35,45 @@ export function Portfolio() {
           </p>
         </div>
 
-        <div className="mt-12 grid auto-rows-[220px] gap-4 sm:grid-cols-3 sm:auto-rows-[260px]">
+        <div className="mt-12 grid auto-rows-[220px] gap-4 sm:auto-rows-[260px] sm:grid-cols-3">
           {WORKS.map((w) => (
-            <figure
+            <button
               key={w.src}
-              className={`group relative min-w-0 overflow-hidden rounded-xl border border-border bg-card ${w.span}`}
+              type="button"
+              onClick={() => setOpen(w)}
+              className={`group relative min-w-0 overflow-hidden rounded-xl border border-border bg-card focus-visible:ring-2 focus-visible:ring-amber focus-visible:outline-none ${w.span}`}
             >
               <img
                 src={w.src}
-                alt={lang === "ar" ? w.ar : w.en}
+                alt={ar ? w.ar : w.en}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep/90 to-transparent p-4 text-sm font-bold text-primary-foreground">
-                {lang === "ar" ? w.ar : w.en}
-              </figcaption>
-            </figure>
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep/90 to-transparent p-4 text-start text-sm font-bold text-primary-foreground">
+                {ar ? w.ar : w.en}
+              </span>
+            </button>
           ))}
         </div>
       </div>
+
+      <Dialog open={!!open} onOpenChange={(o) => !o && setOpen(null)}>
+        <DialogContent className="max-w-3xl border-navy/40 bg-navy-deep p-2 sm:p-3">
+          {open && (
+            <>
+              <DialogTitle className="sr-only">{ar ? open.ar : open.en}</DialogTitle>
+              <img
+                src={open.src}
+                alt={ar ? open.ar : open.en}
+                className="max-h-[75vh] w-full rounded-lg object-contain"
+              />
+              <p className="p-2 text-center text-sm font-bold text-primary-foreground">
+                {ar ? open.ar : open.en}
+              </p>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

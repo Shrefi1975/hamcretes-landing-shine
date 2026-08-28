@@ -7,7 +7,7 @@ export function VideoShowcase() {
 
   return (
     <section id="showcase" className="bg-secondary py-20 sm:py-28">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
         <div className="min-w-0">
           <span className="text-sm font-black tracking-widest text-amber uppercase">
             {t("videoKicker")}
@@ -22,7 +22,7 @@ export function VideoShowcase() {
           </p>
         </div>
 
-        <div className="min-w-0 overflow-hidden rounded-2xl border border-border bg-navy-deep shadow-card">
+        <div className="mx-auto w-full max-w-sm min-w-0 overflow-hidden rounded-2xl border border-border bg-navy-deep shadow-card">
           <video
             src={showcase.url}
             controls
@@ -30,7 +30,7 @@ export function VideoShowcase() {
             muted
             loop
             preload="metadata"
-            className="aspect-video h-full w-full object-cover"
+            className="aspect-[9/16] h-full w-full object-cover"
           />
         </div>
       </div>

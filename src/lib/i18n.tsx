@@ -31,6 +31,9 @@ const AR = {
   servicesKicker: "Our Services",
   servicesTitle: "خدماتنا",
   servicesText: "جميع أعمال الخرسانة والتشطيبات الأرضية تحت سقف واحد، بفريق فني متخصص ومعدات حديثة.",
+  viewDetails: "عرض التفاصيل",
+  benefits: "المميزات والمواصفات",
+  bookThis: "احجز هذه الخدمة",
 
   workKicker: "Our Work",
   workTitle: "أعمالنا",
@@ -107,6 +110,9 @@ const EN: Record<keyof typeof AR, string> = {
   servicesTitle: "Our Services",
   servicesText:
     "Every concrete and floor-finishing service under one roof, delivered by a specialised technical team with modern equipment.",
+  viewDetails: "View details",
+  benefits: "Benefits & specifications",
+  bookThis: "Book this service",
 
   workKicker: "Our Work",
   workTitle: "Our Work",
