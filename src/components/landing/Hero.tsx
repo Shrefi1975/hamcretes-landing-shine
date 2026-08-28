@@ -110,7 +110,7 @@ export function Hero() {
             />
           ))}
           <span className="ms-2 flex items-center gap-1 text-sm font-semibold text-primary-foreground/70">
-            {SLIDES[i].label}
+            {SLIDES[i]?.label}
             <ChevronLeft className="h-4 w-4 shrink-0" />
           </span>
         </div>
