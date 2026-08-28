@@ -27,6 +27,8 @@ const AR = {
   videoText:
     "فريقنا المتخصص يحوّل الأرضيات الخرسانية الخام إلى أسطح مطبوعة ولامعة بتشطيب مثالي. شاهد مراحل التنفيذ الحقيقية على أرض الموقع من التسوية حتى الختام.",
   videoNote: "تسجيل حقيقي من أحد مواقع التنفيذ",
+  mute: "كتم الصوت",
+  unmute: "تشغيل الصوت",
 
   servicesKicker: "Our Services",
   servicesTitle: "خدماتنا",
@@ -105,6 +107,8 @@ const EN: Record<keyof typeof AR, string> = {
   videoText:
     "Our specialised crew turns raw concrete into stamped, polished, flawless flooring. Watch the real on-site execution stages, from leveling all the way to the final finish.",
   videoNote: "Real footage from one of our project sites",
+  mute: "Mute",
+  unmute: "Unmute",
 
   servicesKicker: "Our Services",
   servicesTitle: "Our Services",
