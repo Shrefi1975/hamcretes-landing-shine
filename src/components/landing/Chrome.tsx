@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MessageCircle, Menu, X, Mail, Phone, Languages } from "lucide-react";
 import { WHATSAPP_URL, EMAIL, PHONE_DISPLAY, MANAGER, MANAGER_EN } from "@/lib/hamcretes";
 import { useLang } from "@/lib/i18n";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 
 const LINKS = [
   { href: "#home", key: "navHome" },
@@ -58,7 +58,7 @@ export function Header() {
       <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-3 sm:px-8">
         <a href="#home" className="flex min-w-0 items-center gap-3">
           <img
-            src={logo.url}
+            src={logo}
             alt="Hamcretes / KSA Flooring"
             width={44}
             height={44}
@@ -148,7 +148,7 @@ export function Footer() {
       <div className="mx-auto grid w-full max-w-6xl gap-6 px-5 sm:px-8 md:grid-cols-2">
         <div className="flex min-w-0 items-center gap-4">
           <img
-            src={logo.url}
+            src={logo}
             alt="Hamcretes / KSA Flooring"
             width={72}
             height={72}
