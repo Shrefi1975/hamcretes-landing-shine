@@ -45,7 +45,7 @@ export function Hero() {
       <div className="relative mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-center px-5 pt-28 pb-24 sm:px-8">
         <span className="animate-fade-up inline-flex w-fit items-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-4 py-1.5 text-xs font-bold tracking-wide text-amber-bright sm:text-sm">
           <span className="h-2 w-2 shrink-0 rounded-full bg-amber-bright" />
-          مقاولات الخرسانة المطبوعة — المملكة العربية السعودية
+          {t("heroBadge")}
         </span>
 
         <h1
@@ -61,15 +61,14 @@ export function Hero() {
           className="animate-fade-up mt-4 text-2xl leading-snug font-black text-amber-bright sm:text-4xl"
           style={{ animationDelay: "160ms" }}
         >
-          حمكريتس لمقاولات الخرسانة المطبوعة
+          {t("heroSub")}
         </p>
 
         <p
           className="animate-fade-up mt-5 max-w-2xl text-base leading-relaxed text-primary-foreground/80 sm:text-lg"
           style={{ animationDelay: "240ms" }}
         >
-          تنفيذ احترافي للصبات المطبوعة، أرضيات الايبوكسي، الهليكوبتر، وصبات الميول والمستودعات —
-          بدقة الليزر وضمان على التشطيب، مع مواد أو بدون مواد.
+          {t("heroText")}
         </p>
 
         <div
@@ -81,7 +80,7 @@ export function Hero() {
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-amber px-7 py-4 text-base font-black text-accent-foreground shadow-glow transition-transform hover:scale-[1.03]"
           >
             <CalendarCheck className="h-5 w-5 shrink-0" />
-            احجز معاينة مجانية
+            {t("heroCta")}
           </a>
           <a
             href={WHATSAPP_URL}
@@ -90,7 +89,7 @@ export function Hero() {
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-whatsapp px-7 py-4 text-base font-black text-primary-foreground transition-transform hover:scale-[1.03]"
           >
             <MessageCircle className="h-5 w-5 shrink-0" />
-            واتساب مباشر
+            {t("heroWa")}
           </a>
           <a
             href={`tel:+966${PHONE_DISPLAY.slice(1)}`}
@@ -104,16 +103,16 @@ export function Hero() {
         <div className="animate-fade-up mt-12 flex items-center gap-3" style={{ animationDelay: "400ms" }}>
           {SLIDES.map((s, idx) => (
             <button
-              key={s.label}
+              key={s.en}
               onClick={() => setI(idx)}
-              aria-label={s.label}
+              aria-label={label(s)}
               className={`h-1.5 rounded-full transition-all ${
                 idx === i ? "w-12 bg-amber-bright" : "w-6 bg-primary-foreground/35"
               }`}
             />
           ))}
           <span className="ms-2 flex items-center gap-1 text-sm font-semibold text-primary-foreground/70">
-            {SLIDES[i]?.label}
+            {SLIDES[i] ? label(SLIDES[i]) : ""}
             <ChevronLeft className="h-4 w-4 shrink-0" />
           </span>
         </div>
