@@ -165,3 +165,79 @@
     color: var(--color-foreground);
   }
 }
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
+@utility text-gradient-amber {
+  background: var(--gradient-amber);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-navy {
+  background: var(--gradient-navy);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility water-edge {
+  mask-image: linear-gradient(to left, black 62%, transparent 100%);
+}
+
+@keyframes hc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hc-slow-zoom {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.16);
+  }
+}
+
+@keyframes hc-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 oklch(0.68 0.16 148 / 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 18px oklch(0.68 0.16 148 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.68 0.16 148 / 0);
+  }
+}
+
+@utility animate-fade-up {
+  animation: hc-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility animate-slow-zoom {
+  animation: hc-slow-zoom 9s ease-out forwards;
+}
+
+@utility animate-pulse-ring {
+  animation: hc-pulse-ring 2.2s infinite;
+}
